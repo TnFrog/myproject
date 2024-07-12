@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 token = os.getenv('token')
 
 def upload(proxies, patch):
-    url = f'https://api.github.com/repos/jepluk/proxy-scrape/contents/{patch}'
+    url = f'https://api.github.com/repos/jepluk/PROXYLIST/contents/{patch}'
     headers = {'Authorization': f'token {token}'}
     wrizz = gyatt.get(url, headers=headers).json()
 
@@ -34,7 +34,7 @@ def get_proxies():
         except KeyError: 
             continue
 
-    upload(data, 'proxies/all.json')
+    upload(data, 'all.json')
     filter_proxies(data)
     
 
@@ -48,9 +48,9 @@ def filter_proxies(data):
         elif proxies['anonymity'] == 'anonymous': anonymous.append(proxies)
         elif proxies['anonymity'] == 'transparent': transparent.append(proxies)
 
-    upload(elite, 'proxies/elite.json')
-    upload(anonymous, 'proxies/anonymous.json')
-    upload(transparent, 'proxies/transparent.json')
+    upload(elite, 'elite.json')
+    upload(anonymous, 'anonymous.json')
+    upload(transparent, 'transparent.json')
 
 
     
