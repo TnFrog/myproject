@@ -20,7 +20,7 @@ class MassReact:
     def __init__(self, session, fb):
         self.session = session
 
-        if fb.IsValid: [print(fb.ReactToPost(post=pid, react=random.choice([2,4,5,6,7]))) for pid in self.scrape_user()]
+        if fb.IsValid: [print(fb.ReactToPost(post=pid, react=5)) for pid in self.scrape_user()]
         else: print('Please check your cookies.')
 
     def scrape_user(self):
@@ -33,5 +33,5 @@ with requests.session() as ses:
     ses.cookies['cookie'] = cookie
     fb = Start(cookie)
 
-    MassAdd(ses, fb)
+    # MassAdd(ses, fb)
     MassReact(ses, fb)
